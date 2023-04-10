@@ -1,6 +1,8 @@
 # UnSelenium
 实现类似 py 中 [undetected_chromedriver](https://github.com/ultrafunkamsterdam/undetected-chromedriver) 功能的 go 版本，可以过一些检测
 
+该库参考了：[go-undetected_chromedriver](https://github.com/Davincible/go-undetected-chromedriver)
+
 该库具备执行 CDP 命令的能力
 
 不论是 py 还是 go，在这里的实现方式，本质上就是开启一个浏览器，通过 driver 去控制
