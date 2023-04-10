@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/Leviathangk/go-unselenium/unselenium"
 	"time"
 
 	"github.com/Leviathangk/go-glog/glog"
+	"github.com/Leviathangk/go-unselenium/unselenium"
 )
 
 func main() {
