@@ -1,4 +1,4 @@
-module unselenium
+module github.com/Leviathangk/go-unselenium
 
 go 1.18
 

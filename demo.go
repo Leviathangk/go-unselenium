@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/Leviathangk/go-unselenium/unselenium"
 	"os"
 	"time"
-	"unselenium/unselenium"
 
 	"github.com/Leviathangk/go-glog/glog"
 )
