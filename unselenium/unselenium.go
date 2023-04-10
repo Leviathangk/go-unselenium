@@ -2,8 +2,11 @@ package unselenium
 
 import (
 	"context"
+	"os"
 	"os/exec"
+	"os/signal"
 	"sync"
+	"syscall"
 	"time"
 
 	"github.com/Leviathangk/go-glog/glog"
@@ -19,6 +22,32 @@ type Driver struct {
 	selenium.WebDriver                    // 代表 Selenium Driver：这样写就会拥有其方法
 	HasStop            bool               // 是否已关闭
 	Locker             sync.Mutex         // 锁：用来防止重复停止
+}
+
+var (
+	signalChannel = make(chan os.Signal, 3) // 信号监听通道
+	Drivers       []*Driver                 // 所有已经启动的 driver
+	ExitWhenKill  = true                    // 在监听到退出信号时，主动触发 os.Exit()
+)
+
+func init() {
+	// 监听指定信号
+	// os.Interrupt 为 ctrl+c
+	// os.Kill 为 kill
+	// syscall.SIGTERM 为 kill 不加 -9 时的 pid
+	signal.Notify(signalChannel, os.Interrupt, os.Kill, syscall.SIGTERM)
+	go func() {
+		// 阻塞，直到有信号传入
+		s := <-signalChannel
+		glog.Debugf("An exit signal is received：%s\n", s)
+
+		StopAll() // 释放所有资源
+
+		// 退出系统
+		if ExitWhenKill {
+			os.Exit(1)
+		}
+	}()
 }
 
 // NewDriver 创建 Driver
@@ -44,8 +73,8 @@ func NewDriver(config *Config) (*Driver, error) {
 		return nil, err
 	}
 
-	// 监控退出信号：保证资源释放
-	driver.monitorExit()
+	// 存放已启动的 Driver，保证资源释放
+	Drivers = append(Drivers, driver)
 
 	// 启动浏览器
 	err = driver.startChrome()
@@ -98,7 +127,23 @@ func (d *Driver) Quit() {
 		if d.WebDriver != nil {
 			d.WebDriver.Quit()
 		}
+
+		// 移除 driver
+		for index, driver := range Drivers {
+			if d == driver {
+				Drivers = append(Drivers[:index], Drivers[index+1:]...)
+				break
+			}
+		}
+
 		d.HasStop = true
 		glog.Debugln("UnSelenium Closed Successfully!")
+	}
+}
+
+// StopAll 释放所有已启动的 Driver 的资源
+func StopAll() {
+	for _, driver := range Drivers {
+		driver.Quit()
 	}
 }
