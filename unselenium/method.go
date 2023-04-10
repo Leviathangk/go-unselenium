@@ -6,9 +6,11 @@ import (
 	"net"
 	"os"
 	"os/exec"
+	"os/signal"
 	"runtime"
 	"strconv"
 	"strings"
+	"syscall"
 
 	"github.com/Leviathangk/go-glog/glog"
 	"github.com/stitch-june/selenium"
@@ -249,6 +251,24 @@ func (d *Driver) removeCdcProps() {
 	if _, err := d.ExecuteCDPScript(script); err != nil {
 		glog.Warningln("Execute remove cdc props", err)
 	}
+}
+
+// monitorExit 监控退出信号：保证资源释放
+func (d *Driver) monitorExit() {
+	// 创建通道
+	signalChannel := make(chan os.Signal)
+
+	// 监听指定信号
+	// os.Interrupt 为 ctrl+c
+	// os.Kill 为 kill
+	// syscall.SIGTERM 为 kill 不加 -9 时的 pid
+	signal.Notify(signalChannel, os.Interrupt, os.Kill, syscall.SIGTERM)
+
+	go func() {
+		s := <-signalChannel // 阻塞，直到有信号传入
+		glog.Debugf("An exit signal is received：%s\n", s)
+		d.Quit()
+	}()
 }
 
 // ExecuteCDP 执行 CDP 命令

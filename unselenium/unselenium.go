@@ -44,6 +44,9 @@ func NewDriver(config *Config) (*Driver, error) {
 		return nil, err
 	}
 
+	// 监控退出信号：保证资源释放
+	driver.monitorExit()
+
 	// 启动浏览器
 	err = driver.startChrome()
 	if err != nil {
