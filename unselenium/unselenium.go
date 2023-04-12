@@ -32,6 +32,12 @@ var (
 
 func init() {
 	// 监听指定信号
+	// (1) kill -2 pid 向指定 pid 发送 SIGINT 中断信号, 等同于 ctrl+c.
+	// (2) kill -9 pid, 向指定 pid 发送 SIGKILL 立即终止信号.
+	// (3) kill -15 pid, 向指定 pid 发送 SIGTERM 终止信号.
+	// (4) kill pid 等同于 kill 15 pid
+
+	// 这里的信号说明
 	// os.Interrupt 为 ctrl+c
 	// os.Kill 为 kill
 	// syscall.SIGTERM 为 kill 不加 -9 时的 pid
