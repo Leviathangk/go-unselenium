@@ -149,7 +149,10 @@ func (d *Driver) Quit() {
 
 // StopAll 释放所有已启动的 Driver 的资源
 func StopAll() {
+	close(signalChannel)
+
 	for _, driver := range Drivers {
 		driver.Quit()
 	}
+
 }
