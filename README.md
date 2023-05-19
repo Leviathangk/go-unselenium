@@ -5,7 +5,9 @@
 
 该库参考了：[tebeka/selenium](https://github.com/tebeka/selenium)  
 该库参考了：[stitch-june/selenium](https://github.com/stitch-june/selenium)  
-该库参考了：[go-undetected_chromedriver](https://github.com/Davincible/go-undetected-chromedriver)  
+该库参考了：[go-undetected_chromedriver](https://github.com/Davincible/go-undetected-chromedriver)
+
+文档可看：[tebeka/selenium](https://pkg.go.dev/github.com/tebeka/selenium#section-readme)
 
 该库具备执行 CDP 命令的能力
 
