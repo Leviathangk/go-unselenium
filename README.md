@@ -3,9 +3,9 @@
 实现类似 py 中 [undetected_chromedriver](https://github.com/ultrafunkamsterdam/undetected-chromedriver) 功能的 go
 版本，可以过一些检测
 
-该库参考了：[tebeka/selenium](https://github.com/tebeka/selenium)
-该库参考了：[stitch-june/selenium](https://github.com/stitch-june/selenium)
-该库参考了：[go-undetected_chromedriver](https://github.com/Davincible/go-undetected-chromedriver)
+该库参考了：[tebeka/selenium](https://github.com/tebeka/selenium)  
+该库参考了：[stitch-june/selenium](https://github.com/stitch-june/selenium)  
+该库参考了：[go-undetected_chromedriver](https://github.com/Davincible/go-undetected-chromedriver)  
 
 该库具备执行 CDP 命令的能力
 
