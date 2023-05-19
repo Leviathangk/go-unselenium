@@ -228,7 +228,7 @@ func (d *Driver) getCdcProps() bool {
 
 	res, err := d.ExecuteScript(script, nil)
 	if err != nil {
-		glog.Warningln("Failed to execute get cdc script", err)
+		glog.Warnln("Failed to execute get cdc script", err)
 		return false
 	}
 
@@ -246,7 +246,7 @@ func (d *Driver) removeCdcProps() {
 	result.forEach(p=>p.match(/.+_.+_(Array|Promise|Symbol)/ig) && delete window[p])
 	`
 	if _, err := d.ExecuteCDPScript(script); err != nil {
-		glog.Warningln("Execute remove cdc props", err)
+		glog.Warnln("Execute remove cdc props", err)
 	}
 }
 

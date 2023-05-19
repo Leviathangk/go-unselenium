@@ -3,7 +3,7 @@ module github.com/Leviathangk/go-unselenium
 go 1.18
 
 require (
-	github.com/Leviathangk/go-glog v0.0.3
+	github.com/Leviathangk/go-glog v0.0.10
 	github.com/stitch-june/selenium v0.10.1
 )
 

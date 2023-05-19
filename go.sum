@@ -9,6 +9,8 @@ github.com/BurntSushi/xgbutil v0.0.0-20160919175755-f7c97cef3b4e h1:4ZrkT/RzpnRO
 github.com/BurntSushi/xgbutil v0.0.0-20160919175755-f7c97cef3b4e/go.mod h1:uw9h2sd4WWHOPdJ13MQpwK5qYWKYDumDqxWWIknEQ+k=
 github.com/Leviathangk/go-glog v0.0.3 h1:7yv7mdndFVcGs/xQ+z3CT1rUizZbZbvDVU9kS/vB42w=
 github.com/Leviathangk/go-glog v0.0.3/go.mod h1:efruE2s7NOJCauSLFMCtRQ8gqBDetRyODHfgykLg+Cc=
+github.com/Leviathangk/go-glog v0.0.10 h1:7dnKd3jtDyJccrT5mwzgYpVj3NWtEs5s231TGrZmsRQ=
+github.com/Leviathangk/go-glog v0.0.10/go.mod h1:efruE2s7NOJCauSLFMCtRQ8gqBDetRyODHfgykLg+Cc=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
 github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf/go.mod h1:ybxpYRFXyAe+OPACYpWeL0wqObRcbAqCMya13uyzqw0=
